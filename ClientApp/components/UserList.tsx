@@ -25,10 +25,10 @@ class UserList extends React.Component<UserListProps, UserListState> {
     private getStateFromProps(props: UserListProps): UserListState {
         let order = typeof props.get['order'] !== 'undefined' ? props.get['order'] : '';
         if (UserOrders.findIndex((item) => { return (item.order == order); }) < 0) order = UserOrders[0].order;
+        let get = props.get;
 
         return {
             filteredUsers: props.users.items.filter((item: User) => {
-                let get = props.get;
                 if (/*typeof get['isArchive'] !== 'undefined' &&*/ get['isArchive'] == '1') {
                     if (!item.isArchive) return false;
                 } else {
