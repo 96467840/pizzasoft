@@ -20,6 +20,34 @@
     <Content Remove="ClientApp\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ClientApp\components\index.ts" />
+    <None Remove="ClientApp\components\UserFilter.tsx" />
+    <None Remove="ClientApp\components\UserList.tsx" />
+    <None Remove="ClientApp\models\CommonModels.ts" />
+    <None Remove="ClientApp\models\index.ts" />
+    <None Remove="ClientApp\models\UserModels.ts" />
+    <None Remove="ClientApp\models\Utils.ts" />
+    <None Remove="ClientApp\pages\Error404Page.tsx" />
+    <None Remove="ClientApp\pages\index.ts" />
+    <None Remove="ClientApp\pages\UsersPage.tsx" />
+    <None Remove="ClientApp\store\Users.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\index.ts" />
+    <TypeScriptCompile Include="ClientApp\components\UserFilter.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\UserList.tsx" />
+    <TypeScriptCompile Include="ClientApp\models\CommonModels.ts" />
+    <TypeScriptCompile Include="ClientApp\models\index.ts" />
+    <TypeScriptCompile Include="ClientApp\models\UserModels.ts" />
+    <TypeScriptCompile Include="ClientApp\models\Utils.ts" />
+    <TypeScriptCompile Include="ClientApp\pages\Error404Page.tsx" />
+    <TypeScriptCompile Include="ClientApp\pages\index.ts" />
+    <TypeScriptCompile Include="ClientApp\pages\UsersPage.tsx" />
+    <TypeScriptCompile Include="ClientApp\store\Users.ts" />
+  </ItemGroup>
+
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">

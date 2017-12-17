@@ -1,0 +1,47 @@
+﻿.user-filter {
+    label {
+        font-weight: normal;
+    }
+    select{
+        max-width:160px;
+    }
+    .checkbox-label {
+        margin-left: 10px;
+    }
+
+    .form-group {
+        margin: 10px 10px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .user-filter {
+        .form-group {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        select {
+            max-width: 100%;
+        }
+    }
+}
+
+.user-list {
+    min-width: 290px;
+
+    .row {
+        border-radius: 5px;
+        margin-bottom: 5px;
+        padding: 5px;
+        background-color: #fafafa;
+    }
+}

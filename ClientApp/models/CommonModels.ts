@@ -1,0 +1,1 @@
+﻿export interface Hash<T> { [s: string]: T; }

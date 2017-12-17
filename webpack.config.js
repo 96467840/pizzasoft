@@ -31,6 +31,25 @@ module.exports = (env) => {
         module: {
             rules: [
                 { test: /\.css$/, use: ExtractTextPlugin.extract({ use: isDevBuild ? 'css-loader' : 'css-loader?minimize' }) }
+            ],
+            rules: [
+                {
+                    test: /\.scss$/, use: ExtractTextPlugin.extract({
+                        use: [{
+                            loader: "css-loader", options: {
+                                sourceMap: true,
+                                minimize: true
+                            }
+                        }, {
+                            loader: "sass-loader", options: {
+                                sourceMap: true,
+                                minimize: true
+                            }
+                        }],
+                        // use style-loader in development
+                        //fallback: "style-loader"
+                    })
+                }
             ]
         },
         output: { path: path.join(__dirname, clientBundleOutputDir) },
