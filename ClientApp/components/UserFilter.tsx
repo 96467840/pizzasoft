@@ -1,11 +1,11 @@
 ﻿import * as React from 'react';
 import { Link, NavLink, RouteComponentProps, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { History } from 'history';
+//import { History } from 'history';
 import { ApplicationState } from '../store';
 import * as UsersStore from '../store/Users';
 
-import { User, UserRoles, UserOrders, UserRouterProps, Utils, Hash } from '../models';
+import { User, UserRoles, UserSorts, UserRouterProps, Utils, Hash, WithHistory } from '../models';
 
 interface UserFilterState {
     role: string;
@@ -14,12 +14,10 @@ interface UserFilterState {
     path: string;
 }
 
-interface withHistory {
-    history: History;
-}
+
 type UserFilterProps =
     ApplicationState
-    & UserRouterProps & withHistory
+    & UserRouterProps & WithHistory
     & typeof UsersStore.actionCreators;
 
 class UserFilter extends React.Component<UserFilterProps, UserFilterState> {
@@ -96,7 +94,7 @@ class UserFilter extends React.Component<UserFilterProps, UserFilterState> {
                     this.setState({ order: event.currentTarget.value }, () => { this.Search(); });
                 }} name="role" className="form-control" value={this.state.order}>
                     {
-                        UserOrders.map((item) => {
+                        UserSorts.map((item) => {
                             return <option key={item.order} value={item.order}>{item.name}</option>;
                         })
                     }
@@ -107,7 +105,7 @@ class UserFilter extends React.Component<UserFilterProps, UserFilterState> {
 }
 
 // Wire up the React component to the Redux store
-export default connect<any, any, UserRouterProps & withHistory>(
+export default connect<any, any, UserRouterProps & WithHistory>(
     (state: ApplicationState) => state, // Selects which state properties are merged into the component's props
     UsersStore.actionCreators                 // Selects which action creators are merged into the component's props
 )(UserFilter);

@@ -12,12 +12,16 @@ export class UsersPage extends React.Component<UsersProps, {}> {
     public render() {
         let get = Utils.get_from_location(this.props.location);
         //console.log('....', this.props.history, get);
-        return <div className="container1">
+        let back = encodeURIComponent(Utils.getCurrentUrl(this.props.location));
+
+        return <div className="">
             <h1>Users</h1>
+
+            <Link to={`/add?back=${back}`} className="btn btn-default">Добавить</Link>
 
             <UserFilter {...this.props.match.params} get={get} searchParams={this.props.location.search} history={this.props.history} />
 
-            <UserList {...this.props.match.params} get={get} searchParams={this.props.location.search} />
+            <UserList {...this.props.match.params} get={get} searchParams={this.props.location.search} back={back} />
             
         </div>;
     }

@@ -2,6 +2,9 @@
   "name": "pizzasoft",
   "private": true,
   "version": "0.0.0",
+  "scripts": {
+    "build": "node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js --env.prod && node_modules/webpack/bin/webpack.js --env.prod"
+  },
   "devDependencies": {
     "@types/history": "4.6.0",
     "@types/react": "15.0.35",

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { ApplicationState } from '../store';
 import * as UsersStore from '../store/Users';
 
-import { User, UserOrders, UserRouterProps, Utils } from '../models';
+import { User, UserSorts, UserRouterProps, Utils } from '../models';
 
 interface UserListState {
     filteredUsers: Array<User>;
@@ -24,7 +24,7 @@ class UserList extends React.Component<UserListProps, UserListState> {
     }
     private getStateFromProps(props: UserListProps): UserListState {
         let order = typeof props.get['order'] !== 'undefined' ? props.get['order'] : '';
-        if (UserOrders.findIndex((item) => { return (item.order == order); }) < 0) order = UserOrders[0].order;
+        if (UserSorts.findIndex((item) => { return (item.order == order); }) < 0) order = UserSorts[0].order;
         let get = props.get;
 
         return {
@@ -113,8 +113,8 @@ class UserList extends React.Component<UserListProps, UserListState> {
                     if (index < start) return;
                     if (index >= (start + onPage)) return;
                     return <div key={item.id} className="row">
-                        <div className="col-xs-2 col-sm-1">{item.id} {item.isArchive?'A':''} </div>
-                        <div className="col-xs-10 col-sm-4">{item.name}</div>
+                        <div className="col-xs-2 col-sm-1">{item.id} {item.isArchive ? 'A' : ''} </div>
+                        <div className="col-xs-10 col-sm-4"><Link to={`/edit/${item.id}?back=${this.props.back}`}>{item.name}</Link></div>
 
                         <div className="col-xs-2 col-sm-1">{item.role}</div>
                         <div className="col-xs-4 col-sm-2">{item.birthday}</div>

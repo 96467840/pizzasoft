@@ -1,3 +1,3 @@
-﻿export { User, UserRoles, UserOrders, defaultUsers, UserRouterProps } from './UserModels';
+﻿export { User, UserRoles, UserSorts, defaultUsers, UserRouterProps, EditUserRouterProps } from './UserModels';
 export { Utils } from './Utils';
-export { Hash } from './CommonModels';
+export { Hash, WithHistory } from './CommonModels';

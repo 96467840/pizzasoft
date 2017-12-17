@@ -1,11 +1,17 @@
 ﻿import { Location } from 'history';
 import { Hash } from './CommonModels';
 
+export interface EditUserRouterProps {
+    userid: number;
+    back?: string;
+}
+
 export interface UserRouterProps {
     start?: string;
     // передаю в компоненты 2 варианта гет параметров распарсенный и нет в целях оптимизации
     get: Hash<string>;
     searchParams: string;
+    back?: string;
 }
 interface UserRole {
     id: string;
@@ -19,11 +25,11 @@ export const UserRoles: Array<UserRole> = [
     { id: 'cook', name: 'Повар' },
 ];
 
-interface UserOrder {
+interface UserSort {
     order: string;
     name: string;
 }
-export const UserOrders: Array<UserOrder> = [
+export const UserSorts: Array<UserSort> = [
     { order: 'id:asc', name: 'По умолчанию' },
     { order: 'name:asc', name: 'По имени' },
     { order: 'name:desc', name: 'По имени (обратно)' },

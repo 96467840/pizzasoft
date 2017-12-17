@@ -18,6 +18,36 @@ export class Utils {
         return id + 1;
     }
 
+    static isValidDate(s: string): boolean {
+        try {
+            let bits = s.split('.');
+            let d = new Date(parseInt(bits[2]), parseInt(bits[1]) - 1, parseInt(bits[0]));
+            return d && (d.getMonth() + 1) == parseInt(bits[1]);
+        } catch (e) {
+            return false;
+        }
+    }
+
+    // относительные урлы запретим 
+    static checkRedirect(redirect: string | null, location: Location): boolean {
+        if (redirect == null) return false;
+        if (redirect.startsWith('//')) return false;
+
+        // единственный парвильный вариант урл должен начинатся с ОДНОЙ /
+        // но елси урл равен текущему то не надо делать редирект!
+        if (redirect.startsWith('/')) {
+            let curr = Utils.getCurrentUrl(location);
+            if (curr == redirect) return false;
+            return true;
+        }
+
+        return false;
+    }
+
+    static getCurrentUrl(location: Location): string {
+        return location.pathname + location.search;
+    }
+
     static get_from_location(location: Location): Hash<string> {
         let l: any = {};
         let g = location.search;//window.location.search;
