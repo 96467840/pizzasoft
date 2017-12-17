@@ -44,6 +44,7 @@
     "webpack-hot-middleware": "2.18.2",
     "webpack-merge": "4.1.0",
     "node-sass": "^4.6.1",
+    "lite-server": "^2.3.0",
     "sass-loader": "^6.0.6"
   }
 }

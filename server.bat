@@ -1,0 +1,1 @@
+start lite-server -c ls-config.js
